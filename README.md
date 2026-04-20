@@ -1,17 +1,17 @@
-# 🔒 Security Audit Skill for OpenCode
+# 🔒 Security Audit Skill - Universal AI Agent
 
-**Professional-grade security auditing for codebases - detects vulnerabilities, secrets, OWASP issues, and provides actionable fixes.**
+**Professional-grade security auditing for codebases - works with OpenCode, Claude Code, OpenClaw, Hermes, Cursor, Copilot, Cline, and all AI coding agents.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Compatibility](https://img.shields.io/badge/Compatibility-OpenCode-blue)](https://opencode.ai)
-[![Category](https://img.shields.io/badge/Category-Security-green)](https://opencode.ai/docs/skills)
-[![Stars](https://img.shields.io/github/stars/YOUR_USERNAME/security-audit?style=social)](https://github.com/YOUR_USERNAME/security-audit)
+[![Compatibility](https://img.shields.io/badge/Compatibility-Universal-blue)](https://github.com/nabeelthethird/security-audit)
+[![Agents](https://img.shields.io/badge/Agents-All%20AI%20Coders-green)](https://github.com/nabeelthethird/security-audit)
+[![Category](https://img.shields.io/badge/Category-Security-green)](https://github.com/nabeelthethird/security-audit)
 
 ---
 
 ## 🎯 What This Does
 
-This skill transforms OpenCode into a **security auditing powerhouse** that scans your codebase for:
+This skill transforms **any AI coding agent** into a **security auditing powerhouse** that scans your codebase for:
 
 - 🔑 **Hardcoded secrets** (API keys, passwords, tokens)
 - 💉 **Injection vulnerabilities** (SQL, NoSQL, command, XSS)
@@ -22,50 +22,68 @@ This skill transforms OpenCode into a **security auditing powerhouse** that scan
 
 ---
 
-## ⚡ Quick Install
+## 🤖 Compatible AI Agents
 
-### Option 1: Global (All Projects)
-
-```bash
-git clone https://github.com/YOUR_USERNAME/security-audit.git ~/.config/opencode/skills/security-audit
-```
-
-### Option 2: Project-Specific
-
-```bash
-git clone https://github.com/YOUR_USERNAME/security-audit.git .opencode/skills/security-audit
-```
-
-### Option 3: Manual
-
-1. Download this repository
-2. Place in `~/.config/opencode/skills/security-audit/` (global)
-3. Or `.opencode/skills/security-audit/` (project)
+| Agent | Status | Install Location |
+|-------|--------|------------------|
+| **OpenCode** | ✅ Full Support | `~/.config/opencode/skills/` |
+| **Claude Code** | ✅ Full Support | `~/.claude/skills/` |
+| **OpenClaw** | ✅ Full Support | `~/.claude/skills/` |
+| **Hermes** | ✅ Full Support | `~/.hermes/skills/` or `~/.config/opencode/skills/` |
+| **Cursor** | ✅ Full Support | `.cursor/rules/` or project skills |
+| **GitHub Copilot** | ✅ Full Support | Project skills folder |
+| **Cline** | ✅ Full Support | `~/.claude/skills/` |
+| **Windsurf** | ✅ Full Support | Project skills folder |
+| **Kilo Code** | ✅ Full Support | `~/.claude/skills/` |
 
 ---
 
-## 🚀 Usage
+## ⚡ Quick Install
 
-### Basic Audit
+### For All Agents (Global)
 
+```bash
+# Works for OpenCode, Claude Code, OpenClaw, Hermes, Cline, Kilo
+git clone https://github.com/nabeelthethird/security-audit.git ~/.config/opencode/skills/security-audit
+
+# Alternative location for Claude-based agents
+git clone https://github.com/nabeelthethird/security-audit.git ~/.claude/skills/security-audit
+```
+
+### Project-Specific
+
+```bash
+# Works with any agent in this project
+git clone https://github.com/nabeelthethird/security-audit.git .opencode/skills/security-audit
+# OR
+git clone https://github.com/nabeelthethird/security-audit.git .claude/skills/security-audit
+```
+
+---
+
+## 🚀 Usage Examples
+
+### With OpenCode
 ```
 @build Run a security audit on this codebase
 ```
 
-### Specific Scan
-
+### With Claude Code / OpenClaw / Cline
 ```
-@build Check src/auth/ for vulnerabilities
-```
-
-### Secret Detection
-
-```
-@build Scan for hardcoded API keys and secrets
+Please run a comprehensive security audit using the security-audit skill
 ```
 
-### Full Report
+### With Cursor
+```
+@security-audit Audit this codebase for vulnerabilities
+```
 
+### With Hermes
+```
+Load security-audit skill and scan for hardcoded secrets
+```
+
+### Generic (Any Agent)
 ```
 skill: security-audit
 Perform comprehensive security audit with severity ratings
@@ -111,6 +129,7 @@ app.listen(3000);
 
 // ✅ Fixed
 app.use(helmet()); // Adds security headers
+app.use(rateLimit({ max: 100, windowMs: 15 * 60 * 1000 }));
 app.listen(3000);
 ```
 
@@ -149,7 +168,7 @@ app.listen(3000);
 
 ## 🔧 Configuration
 
-Create `.opencode/skills/security-audit/config.json`:
+Create a config file in your skill directory:
 
 ```json
 {
@@ -222,10 +241,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Install OpenCode
-        run: npm i -g opencode-ai
+      - name: Install Skill
+        run: |
+          git clone https://github.com/nabeelthethird/security-audit.git ~/.config/opencode/skills/security-audit
       
-      - name: Run Security Audit
+      - name: Run Audit
         run: |
           opencode --skill security-audit "Full audit" > security-report.md
       
@@ -268,13 +288,7 @@ jobs:
 
 ## 🤝 Contributing
 
-Contributions welcome! Please:
-
-1. Fork the repo
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ### Areas for Contribution
 
@@ -289,42 +303,37 @@ Contributions welcome! Please:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file.
+MIT License - See [LICENSE](LICENSE) file.
 
 ---
 
 ## 🆘 Support
 
-- **Documentation**: https://opencode.ai/docs/skills
+- **Documentation**: See files in this repo
+- **Issues**: https://github.com/nabeelthethird/security-audit/issues
 - **Discord**: https://opencode.ai/discord
-- **Issues**: https://github.com/YOUR_USERNAME/security-audit/issues
 
 ---
 
-## 🙏 Acknowledgments
+## ⚡ Quick Start Summary
 
-- Built for [OpenCode](https://opencode.ai) - the open source AI coding agent
-- Follows [OWASP](https://owasp.org) guidelines
-- Inspired by security best practices from NIST, CWE, SANS
+```bash
+# 1. Install (works for all agents)
+git clone https://github.com/nabeelthethird/security-audit.git ~/.config/opencode/skills/security-audit
 
----
+# 2. Use with any AI agent
+# Ask your agent: "Run a security audit using security-audit skill"
 
-## 📈 Roadmap
-
-- [ ] Custom rule builder UI
-- [ ] Auto-fix suggestions with PR generation
-- [ ] Compliance report templates (SOC2, ISO 27001, HIPAA)
-- [ ] Integration with security scanners (Semgrep, Bandit)
-- [ ] Multi-language report translation
-- [ ] Historical trend analysis
-- [ ] Team dashboard integration
+# 3. Check results
+# Agent will provide findings with severity ratings and fixes
+```
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for safer code**
+**Made with ❤️ for safer code across all AI agents**
 
-[Report Vulnerability](https://github.com/YOUR_USERNAME/security-audit/security/advisories) • [Request Feature](https://github.com/YOUR_USERNAME/security-audit/issues)
+[Install Now](#-quick-install) • [View Examples](EXAMPLES.md) • [Report Vulnerability](SECURITY.md)
 
 </div>

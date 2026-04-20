@@ -1,12 +1,13 @@
 ---
 name: security-audit
-description: Comprehensive security auditing for codebases - detects vulnerabilities, secrets, OWASP issues, and provides actionable fixes
+description: Universal security auditing for codebases - detects vulnerabilities, secrets, OWASP issues. Works with OpenCode, Claude Code, OpenClaw, Hermes, Cursor, and all AI coding agents
 license: MIT
-compatibility: opencode
+compatibility: universal
 metadata:
   audience: developers, security teams, devops
   category: security
   version: 1.0.0
+  agents: opencode, claude-code, openclaw, hermes, cursor, copilot, cline
 ---
 
 ## What I Do

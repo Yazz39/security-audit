@@ -1,14 +1,15 @@
-# 🔒 Security Audit Skill
+# 🔒 Security Audit Skill - Universal
 
-> **Professional-grade security auditing for OpenCode agents**
+> **Professional-grade security auditing - works with OpenCode, Claude Code, OpenClaw, Hermes, Cursor, and all AI agents**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Compatibility](https://img.shields.io/badge/Compatibility-OpenCode-blue)](https://opencode.ai)
-[![Category](https://img.shields.io/badge/Category-Security-green)](https://opencode.ai/docs/skills)
+[![Compatibility](https://img.shields.io/badge/Compatibility-Universal-blue)](https://github.com/nabeelthethird/security-audit)
+[![Agents](https://img.shields.io/badge/Agents-All%20AI%20Coders-green)](https://github.com/nabeelthethird/security-audit)
+[![Category](https://img.shields.io/badge/Category-Security-green)](https://github.com/nabeelthethird/security-audit)
 
 ## 🎯 What This Does
 
-Transforms OpenCode into a **security auditing powerhouse** that scans your codebase for:
+Transforms **any AI coding agent** (OpenCode, Claude Code, OpenClaw, Hermes, Cursor, etc.) into a **security auditing powerhouse** that scans your codebase for:
 
 - 🔑 Hardcoded secrets (API keys, passwords, tokens)
 - 💉 Injection vulnerabilities (SQL, NoSQL, command, XSS)
@@ -20,11 +21,13 @@ Transforms OpenCode into a **security auditing powerhouse** that scans your code
 ## ⚡ Quick Start
 
 ```bash
-# Install globally
-git clone https://github.com/YOUR_USERNAME/security-audit.git ~/.config/opencode/skills/security-audit
+# Install globally (works for all agents)
+git clone https://github.com/nabeelthethird/security-audit.git ~/.config/opencode/skills/security-audit
+# OR
+git clone https://github.com/nabeelthethird/security-audit.git ~/.claude/skills/security-audit
 
-# Use in OpenCode
-@build Run a security audit on this codebase
+# Use with any AI agent
+# Ask: "Run a security audit using security-audit skill"
 ```
 
 ## 📊 Sample Findings
