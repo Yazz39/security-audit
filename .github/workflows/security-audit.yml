@@ -1,0 +1,72 @@
+# GitHub Actions - Security Audit CI/CD
+
+name: Security Audit
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly on Mondays at 9 AM
+    - cron: '0 9 * * 1'
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    name: Run Security Audit
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install OpenCode
+        run: npm install -g opencode-ai@latest
+
+      - name: Install Security Audit Skill
+        run: |
+          mkdir -p ~/.config/opencode/skills
+          git clone https://github.com/YOUR_USERNAME/security-audit.git ~/.config/opencode/skills/security-audit
+
+      - name: Run Security Audit
+        run: |
+          opencode --skill security-audit "Perform comprehensive security audit with severity ratings" > security-report.md 2>&1 || true
+
+      - name: Upload Security Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-report
+          path: security-report.md
+          retention-days: 30
+
+      - name: Check for Critical Issues
+        run: |
+          if grep -q "🔴 CRITICAL" security-report.md; then
+            echo "::warning::Critical security issues found!"
+            exit 1
+          fi
+
+      - name: Comment PR with Results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('security-report.md', 'utf8');
+            
+            // Truncate if too long
+            const truncatedReport = report.length > 60000 
+              ? report.substring(0, 60000) + '\n\n... (truncated)' 
+              : report;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🔒 Security Audit Results\n\n\`\`\`markdown\n${truncatedReport}\n\`\`\``
+            });
