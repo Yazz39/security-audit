@@ -30,7 +30,7 @@ jobs:
       - name: Install Security Audit Skill
         run: |
           mkdir -p ~/.config/opencode/skills
-          git clone https://github.com/YOUR_USERNAME/security-audit.git ~/.config/opencode/skills/security-audit
+          git clone https://github.com/Yazz39/security-audit.git ~/.config/opencode/skills/security-audit
 
       - name: Run Security Audit
         run: |
